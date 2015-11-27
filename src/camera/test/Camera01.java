@@ -24,6 +24,7 @@ public class Camera01 extends Rectangle {
 			cameraScale -= 0.01f;
 		if(GameView.q)
 			cameraScale += 0.01f;
+		
 	}
 	
 	public void render(Graphics2D g){

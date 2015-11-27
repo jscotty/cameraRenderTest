@@ -28,7 +28,7 @@ public class Player extends Rectangle {
 	}
 	
 	public void tick(){
-		setBounds((int)pos.xPos, (int)pos.yPos, (int)(width* scale), (int)(height* scale));
+		setBounds((int)(((pos.xPos*scale)-(width* scale)/2)), (int)(((pos.yPos*scale)-(height* scale)/2)/scale), (int)(width* scale), (int)(height* scale));
 		
 		if(GameView.up)
 			pos.yPos -= speed;
@@ -45,7 +45,7 @@ public class Player extends Rectangle {
 	public void render(Graphics2D g){
 		
 		g.setColor(color);
-		g.fillRect((int)pos.xPos, (int)pos.yPos, (int)(width* scale), (int)(height* scale));
+		g.fillRect((int)(((pos.xPos*scale)-(width* scale)/2)), (int)(((pos.yPos*scale)-(height* scale)/2)/scale), (int)(width* scale), (int)(height* scale));
 	}
 
 }
