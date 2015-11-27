@@ -2,11 +2,14 @@ package camera.test;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 
 public class PlayerManager {
 	
 	private Player player;
 	private Player player2;
+	
+	private Ellipse2D ellipse = new Ellipse2D.Float();
 
 	public PlayerManager() {
 		player = new Player(100, 100);
@@ -19,10 +22,22 @@ public class PlayerManager {
 	}
 	
 	public void render(Graphics2D g){
-		if(GameView.getCamera1().intersects(player))
+		ellipse.setFrame(GameView.getCamera1());
+		
+		g.setClip(GameView.getCamera1());
+		if(GameView.getCamera1().intersects(player)){
 			player.render(g);
-		if(GameView.getCamera2().intersects(player2))
+			player.scale = GameView.getCamera1().cameraScale;
+		}
+
+		g.setClip(GameView.getCamera2());
+
+		if(GameView.getCamera2().intersects(player2)) {
 			player2.render(g);
+			player2.scale = GameView.getCamera2().cameraScale;
+		}
+
+		g.setClip(0,0,800,600);
 	}
 
 }

@@ -9,6 +9,7 @@ public class Camera02 extends Rectangle {
 	
 	private int xPos, yPos;
 	private int size;
+	public float cameraScale = 1;
 
 	public Camera02(int x, int y, int size) {
 		xPos = x;
@@ -21,7 +22,11 @@ public class Camera02 extends Rectangle {
 		g.setColor(Color.red);
 		g.drawRect(xPos, yPos, size, size);
 	}
-	
-	
+	public void tick(){
+		if(GameView.s)
+			cameraScale -= 0.01f;
+		if(GameView.w)
+			cameraScale += 0.01f;
+	}
 
 }

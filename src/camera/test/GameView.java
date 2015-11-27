@@ -11,6 +11,7 @@ import my.javagame.main.VectorOperations;
 public class GameView implements KeyListener  {
 
 	public static boolean up, down, left, right;
+	public static boolean shift, alt, q, a, w, s;
 	
 	private static Camera01 camera1;
 	private static Camera02 camera2;
@@ -27,6 +28,8 @@ public class GameView implements KeyListener  {
 	
 	public void tick(double deltaTime){
 		pm.tick();
+		camera1.tick();
+		camera2.tick();
 	}
 
 	public void render(Graphics2D g){
@@ -52,6 +55,24 @@ public class GameView implements KeyListener  {
 		if(key == KeyEvent.VK_RIGHT){
 			right = true;
 		}
+		if(key == KeyEvent.VK_SHIFT){
+			shift = true;
+		}
+		if(key == KeyEvent.VK_ALT){
+			alt = true;
+		}
+		if(key == KeyEvent.VK_A){
+			a = true;
+		}
+		if(key == KeyEvent.VK_Q){
+			q = true;
+		}
+		if(key == KeyEvent.VK_W){
+			w = true;
+		}
+		if(key == KeyEvent.VK_S){
+			s = true;
+		}
 	}
 
 	@Override
@@ -69,6 +90,24 @@ public class GameView implements KeyListener  {
 		}
 		if(key == KeyEvent.VK_RIGHT){
 			right = false;
+		}
+		if(key == KeyEvent.VK_SHIFT){
+			shift = false;
+		}
+		if(key == KeyEvent.VK_ALT){
+			alt = false;
+		}
+		if(key == KeyEvent.VK_A){
+			a = false;
+		}
+		if(key == KeyEvent.VK_Q){
+			q = false;
+		}
+		if(key == KeyEvent.VK_W){
+			w = false;
+		}
+		if(key == KeyEvent.VK_S){
+			s = false;
 		}
 	}
 

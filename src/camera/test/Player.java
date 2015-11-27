@@ -3,6 +3,7 @@ package camera.test;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 
 import my.javagame.main.Vector2D;
 
@@ -12,7 +13,10 @@ public class Player extends Rectangle {
 	private Vector2D pos = new Vector2D(100, 200);
 	private Color color = Color.BLUE;
 	
-	private int width = 32, height = 32, speed = 2;
+	public int width = 32, height = 32, speed = 2;
+	
+	public float scale = 1;
+	
 	
 	public Player(float xPos, float yPos) {
 		pos.xPos = xPos; pos.yPos = yPos;
@@ -24,8 +28,7 @@ public class Player extends Rectangle {
 	}
 	
 	public void tick(){
-		
-		setBounds((int)pos.xPos, (int)pos.yPos, width, height);
+		setBounds((int)pos.xPos, (int)pos.yPos, (int)(width* scale), (int)(height* scale));
 		
 		if(GameView.up)
 			pos.yPos -= speed;
@@ -40,8 +43,9 @@ public class Player extends Rectangle {
 	}
 	
 	public void render(Graphics2D g){
+		
 		g.setColor(color);
-		g.fillRect((int)pos.xPos, (int)pos.yPos, width, height);
+		g.fillRect((int)pos.xPos, (int)pos.yPos, (int)(width* scale), (int)(height* scale));
 	}
 
 }
